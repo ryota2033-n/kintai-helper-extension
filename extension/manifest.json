@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "CWS勤怠自動化ツール",
+  "version": "2.0",
+  "tool_id": "CWS勤怠自動化ツール_v2.0",
+  "companyName": "FSI",
+  "companyConfigName": "FSI-管理",
+  "companyUsageName": "FSI-利用者",
+  "description": "CWS勤怠実績入力を支援する拡張機能。他日への一括入力、PC客観データ等から実行時間・工数を自動算出しての一括申請、休暇・出勤日の申請忘れチェック、報告欄記入漏れ・実行時間乖離チェック、客観差異理由CDの選択式入力に対応",
+  "permissions": ["storage"],
+  "host_permissions": ["http://jinkyuwap.fsi.local/*", "https://script.google.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["http://jinkyuwap.fsi.local/cws/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["http://jinkyuwap.fsi.local/cws/*"],
+      "js": ["page-bridge.js"],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    }
+  ]
+}
