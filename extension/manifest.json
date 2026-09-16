@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "CWS勤怠自動化ツール",
-  "version": "2.1",
-  "tool_id": "CWS勤怠自動化ツール_v2.1",
+  "version": "2.2",
+  "tool_id": "CWS勤怠自動化ツール_v2.2",
   "companyName": "FSI",
   "companyConfigName": "FSI-管理",
   "companyUsageName": "FSI-利用者",
@@ -10,6 +10,11 @@
   "permissions": ["storage"],
   "host_permissions": ["http://jinkyuwap.fsi.local/*", "https://script.google.com/*"],
   "content_scripts": [
+    {
+      "matches": ["http://jinkyuwap.fsi.local/cws/*"],
+      "js": ["early-overlay.js"],
+      "run_at": "document_start"
+    },
     {
       "matches": ["http://jinkyuwap.fsi.local/cws/*"],
       "js": ["content.js"],
